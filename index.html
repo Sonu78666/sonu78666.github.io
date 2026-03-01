@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QA Automation Engineer | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --border: #e2e0d8;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #1a6b3c;
+    --accent-light: #e8f5ee;
+    --tag-bg: #f0ede6;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245, 244, 240, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-left { display: flex; flex-direction: column; justify-content: center; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-name {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-name span { color: var(--accent); }
+
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: white;
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .hero-card-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding: 0.9rem 0;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .stat-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stat-value.green { color: var(--accent); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-image-box {
+    aspect-ratio: 4/5;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-image-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(0,0,0,0.03) 8px,
+      rgba(0,0,0,0.03) 9px
+    );
+  }
+
+  .about-image-inner {
+    text-align: center;
+    z-index: 1;
+  }
+
+  .about-image-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+
+  .about-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .highlight-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.2rem;
+  }
+
+  .highlight-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .highlight-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { }
+
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.8rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-category:hover { border-color: var(--accent); }
+
+  .skill-category-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    background: var(--tag-bg);
+    color: var(--text);
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-stack span {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-links a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .project-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { }
+
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    outline: 1px solid var(--accent);
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .timeline-badge {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .timeline-company {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-role {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--text); border-top: 1px solid #333; }
+
+  #contact .section-label { color: #6fcf97; }
+  #contact .section-title { color: white; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-social a {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: #ccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.2s;
+  }
+
+  .contact-social a:hover { color: #6fcf97; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-group label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: #888;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 0.8rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: #6fcf97; }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .btn-submit {
+    background: #6fcf97;
+    color: #0a1a0f;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .btn-submit:hover { background: #5bbf84; transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #111;
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #222;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: #555;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 6rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-image-box { aspect-ratio: 3/2; max-height: 200px; }
+    .skills-categories { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 540px) {
+    .nav-links { display: none; }
+    .skills-categories { grid-template-columns: 1fr; }
+    .about-highlights { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">QA<span>.</span>Engineer</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-left fade-in">
+      <div class="hero-badge">Available for new opportunities</div>
+      <h1 class="hero-name">Sonu<br/>Yadav<span>.</span></h1>
+      <p class="hero-title">QA Automation Engineer · 8 Years Experience</p>
+      <p class="hero-bio">I build robust, scalable test automation frameworks that catch bugs before they reach production. Passionate about quality, reliability, and making software that just works.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-right fade-in" style="animation-delay: 0.15s;">
+      <div class="hero-card">
+        <p class="hero-card-label">career_stats.json</p>
+        <div class="stat-row">
+          <span class="stat-label">experience</span>
+          <span class="stat-value green">8 Years</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">specialization</span>
+          <span class="stat-value">Test Automation</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">primary_stack</span>
+          <span class="stat-value">Selenium + Java</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">frameworks</span>
+          <span class="stat-value">Cucumber · TestNG</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ci_cd</span>
+          <span class="stat-value green">Jenkins · Docker</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">status</span>
+          <span class="stat-value green">Open to Work ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="fade-in">
+        <div class="about-image-box">
+          <div class="about-image-inner">
+            <div class="about-image-icon">👤</div>
+            <p>photo</p>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <p class="section-label">about_me</p>
+        <h2 class="section-title">Turning bugs into<br/>features (then back again)</h2>
+        <p>With 8 years of hands-on experience in QA Automation, I specialize in designing and implementing end-to-end test frameworks that scale with engineering teams. My work spans web, API, and integration testing across fast-paced agile environments.</p>
+        <p>I thrive at the intersection of development and quality — writing clean, maintainable automation code in Java, integrating test suites into CI/CD pipelines, and collaborating closely with devs to shift quality left.</p>
+        <p>When I'm not writing test scripts, I'm improving pipeline efficiency, mentoring junior QAs, and exploring tools like Playwright to keep the toolkit modern.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-num">8+</div>
+            <div class="highlight-label">Years Experience</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">50+</div>
+            <div class="highlight-label">Projects Tested</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">10k+</div>
+            <div class="highlight-label">Test Cases Written</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">99%</div>
+            <div class="highlight-label">Pipeline Reliability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">tech_stack</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-categories">
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">Automation Frameworks</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Selenium WebDriver</span>
+          <span class="skill-tag">Playwright</span>
+          <span class="skill-tag">TestNG</span>
+          <span class="skill-tag">Cucumber / BDD</span>
+          <span class="skill-tag">JUnit</span>
+          <span class="skill-tag">REST Assured</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">Languages & Scripting</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Gherkin</span>
+          <span class="skill-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">CI/CD & DevOps</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Maven</span>
+          <span class="skill-tag">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">Testing Types</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Functional Testing</span>
+          <span class="skill-tag">Regression Testing</span>
+          <span class="skill-tag">API Testing</span>
+          <span class="skill-tag">Performance Testing</span>
+          <span class="skill-tag">Smoke Testing</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">Databases</p>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">DB Validation</span>
+        </div>
+      </div>
+      <div class="skill-category fade-in">
+        <p class="skill-category-title">Tools & Platforms</p>
+        <div class="skill-tags">
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">IntelliJ IDEA</span>
+          <span class="skill-tag">Allure Reports</span>
+          <span class="skill-tag">Confluence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">featured_projects</p>
+    <h2 class="section-title">What I've Built</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <p class="project-num">01 /</p>
+        <h3 class="project-title">E-Commerce Test Suite</h3>
+        <p class="project-desc">End-to-end automation framework for a large-scale e-commerce platform covering 500+ test scenarios across checkout, payments, and user flows.</p>
+        <div class="project-stack">
+          <span>Selenium</span><span>Java</span><span>Cucumber</span><span>TestNG</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ GitHub</a>
+          <a href="#">→ Live Demo</a>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <p class="project-num">02 /</p>
+        <h3 class="project-title">CI/CD Pipeline Integration</h3>
+        <p class="project-desc">Built a fully automated regression pipeline using Jenkins and Docker that runs 1000+ tests on every pull request with Allure reporting and Slack alerts.</p>
+        <div class="project-stack">
+          <span>Jenkins</span><span>Docker</span><span>Maven</span><span>Allure</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ GitHub</a>
+          <a href="#">→ Live Demo</a>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <p class="project-num">03 /</p>
+        <h3 class="project-title">Playwright API Test Framework</h3>
+        <p class="project-desc">Modern API and UI testing framework built with Playwright for a SaaS application, featuring parallel execution and cross-browser coverage.</p>
+        <div class="project-stack">
+          <span>Playwright</span><span>JavaScript</span><span>Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ GitHub</a>
+          <a href="#">→ Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">work_history</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-meta">
+          <span class="timeline-date">2024 — Present</span>
+          <span class="timeline-badge"></span>
+        </div>
+        <h3 class="timeline-company">Virtusa</h3>
+        <p class="timeline-role">Lead software Engineer</p>
+        <p class="timeline-desc"> Built and maintained Playwright + Cucumber framework with 800+ scenarios. </p>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-meta">
+          <span class="timeline-date">2021 — 2024</span>
+        </div>
+        <h3 class="timeline-company">LTIMINDTREE</h3>
+        <p class="timeline-role">Senior Software Engineer</p>
+        <p class="timeline-desc">Developed TestNG-based automation framework from scratch. Wrote complex SQL validation scripts for backend data integrity testing. Collaborated with developers on shifting QA left in the SDLC.</p>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-meta">
+          <span class="timeline-date">2017 — 2021</span>
+        </div>
+        <h3 class="timeline-company">Capgemini</h3>
+        <p class="timeline-role">SoftwareEngineer</p>
+        <p class="timeline-desc">Started automation journey with Selenium WebDriver and Java. Worked closely with the dev team on manual and automated test cases, defect tracking in JIRA, and sprint-based testing cycles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fade-in">
+        <p class="section-label">get_in_touch</p>
+        <h2 class="section-title">Let's Work<br/>Together</h2>
+        <p>Whether you're looking for a senior QA engineer, want to talk automation strategy, or just want to connect — my inbox is always open.</p>
+        <div class="contact-social">
+          <a href="mailto:your@email.com">✉ sonu7866yadav@email.com</a>
+          <a href="#">https://www.linkedin.com/in/sonu-yadav-4a9306b0/</a>
+          <a href="#">https://github.com/Sonu78666</a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <form class="contact-form" action="https://formspree.io/f/mvzbnrrd" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input name="name" type="text" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input name="email" type="email" placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell me about the opportunity..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Sonu Yadav · QA Automation Engineer</p>
+  <p>Built with HTML · CSS · JS</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav link highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
